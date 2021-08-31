@@ -27,9 +27,11 @@
     type="password" class="form-control @error('password') is-invalid @enderror"
     @if(!$update) required @endif>
 
+    @if($update)
     <small id="passHelp" class="form-text text-muted">
         Kosongkan password bila tidak ingin mengganti
     </small>
+    @endif
 
     @error('password')
         <div class="invalid-feedback">{{ $message }}</div>

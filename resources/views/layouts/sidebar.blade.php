@@ -25,7 +25,7 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="{{ route('admin.videos.index') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Video</span></a>
     </li>
