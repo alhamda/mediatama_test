@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\VideoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
+});
+
+
+Route::prefix('admin')->group(function () {
+
+    Route::name('admin.')->group(function () {
+
+        Route::resources([
+            'users' => UserController::class,
+            'customers' => CustomerController::class,
+            'videos' => VideoController::class,
+        ]);
+
+    });
+
 });
