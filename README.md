@@ -1,5 +1,5 @@
-Laravel 8
-PHP >= 7.3
+Laravel 8\
+PHP >= 7.3\
 
 ## Instalasi
 
@@ -12,10 +12,10 @@ PHP >= 7.3
 
 ## Informasi Akun
 
-Akun Customer
-email: customer@customer.com
-sandi: password
+Akun Customer\
+email: customer@customer.com\
+sandi: password\\
 
-Akun Admin
-email: admin@admin.com
-sandi: password
+Akun Admin\
+email: admin@admin.com\
+sandi: password\
