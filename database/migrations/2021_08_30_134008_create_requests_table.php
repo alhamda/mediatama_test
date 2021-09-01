@@ -23,7 +23,7 @@ class CreateRequestsTable extends Migration
                     ->constrained()
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->enum('status', ['waiting', 'accept', 'decline']);
+            $table->enum('status', ['waiting', 'accept']);
             $table->dateTime('until_date')->nullable();
             $table->timestamps();
         });

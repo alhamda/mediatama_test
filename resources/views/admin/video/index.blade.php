@@ -38,8 +38,8 @@
                         <td>{{ $video->title }}</td>
                         <td>{{ \Str::limit($video->description) }}</td>
                         <td><a href="{{ \Storage::url($video->file); }}">Lihat Video</a></td>
-                        <td>
-                            <form method="post" action="{{ route('admin.videos.destroy', $video->id) }}">
+                        <td style="width:200px;">
+                            <form style="display: block;" method="post" action="{{ route('admin.videos.destroy', $video->id) }}">
                                 @csrf
                                 @method('delete')
 

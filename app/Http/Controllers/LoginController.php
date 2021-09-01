@@ -13,37 +13,41 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-        $rules = [
-            'email'                 => 'required|email',
-            'password'              => 'required|string'
-        ];
 
-        $messages = [
-            'email.required'        => 'Email wajib diisi',
-            'email.email'           => 'Email tidak valid',
-            'password.required'     => 'Password wajib diisi',
-            'password.string'       => 'Password harus berupa string'
-        ];
+        if($request->isMethod('POST')){
+            $this->validate($request, [
+                'email' => 'required|email',
+                'password' => 'required|min:6',
+            ]);
 
-        $validator = Validator::make($request->all(), $rules, $messages);
+            $data = [
+                'email'     => $request->input('email'),
+                'password'  => $request->input('password'),
+            ];
 
-        if($validator->fails()){
-            return redirect()->back()->withErrors($validator)->withInput($request->all);
+            Auth::attempt($data);
+
+            if (Auth::check()) {
+                return redirect()->route('home');
+            } else {
+                return redirect()->back()->with('fail', 'Email atau password anda salah');
+            }
+        }else{
+            return view('login');
         }
+    }
 
-        $data = [
-            'email'     => $request->input('email'),
-            'password'  => $request->input('password'),
-        ];
-
-        Auth::attempt($data);
-
-        if (Auth::check()) {
-            return redirect()->route('home');
-        } else {
-            Session::flash('error', 'Email atau password salah');
-            return redirect()->route('login');
+    public function home(){
+        if(Auth::user()->level=='admin'){
+            return redirect()->route('admin.requests.index');
+        }else{
+            return redirect()->route('customer.videos.index');
         }
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('login');
     }
 
 }

@@ -31,6 +31,12 @@
     </small>
     @endif
 
+    <small id="fileHelp" class="form-text" style="color: blue;">
+    Jika file gagal di upload, silahkan periksa konfigurasi <b>upload_max_filesize</b> dan <b>post_max_size</b> di file php.ini
+    <br>
+    <a href="https://stackoverflow.com/questions/2184513/change-the-maximum-upload-file-size">https://stackoverflow.com/questions/2184513/change-the-maximum-upload-file-size</a>
+    </small>
+
     @error('file')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror

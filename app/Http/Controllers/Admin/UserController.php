@@ -7,12 +7,13 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $users = User::orderBy('name')->get();
+        $users = User::orderBy('name')->where('level','admin')->get();
         return view('admin.admin.index', compact('users'));
     }
 
@@ -109,6 +110,12 @@ class UserController extends Controller
     {
         DB::beginTransaction();
         try{
+
+            if($user->id == Auth::id()){
+                return redirect()
+                    ->back()
+                    ->with('fail', 'Anda tidak dapat menghapus akun anda sendiri');
+            }
 
             $user->delete();
             DB::commit();
