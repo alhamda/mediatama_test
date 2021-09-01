@@ -1,5 +1,5 @@
 Laravel 8\
-PHP >= 7.3\
+PHP >= 7.3
 
 ## Instalasi
 
@@ -14,8 +14,8 @@ PHP >= 7.3\
 
 Akun Customer\
 email: customer@customer.com\
-sandi: password\\
+sandi: password
 
 Akun Admin\
 email: admin@admin.com\
-sandi: password\
+sandi: password
