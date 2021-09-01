@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="Alhamda Adisoka B">
 
-    <title>@yield('title')</title>
+    <title>Video</title>
 
     <link href="{{ url('/') }}/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
